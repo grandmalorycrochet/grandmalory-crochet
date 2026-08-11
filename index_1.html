@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grandmalory Crochet — Handmade with Love</title>
+<meta name="description" content="Crocheted treasures, made just for you. Handcrafted crochet pieces and custom orders by Grandmalory Crochet. Est. 2024."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F2EBE0;
+    --warm-white: #FAF6F0;
+    --bg-logo: #EDE3D4;
+    --deep: #2C1F10;
+    --umber: #6B4520;
+    --gold: #9E7520;
+    --gold-light: #D4B87A;
+    --muted: #9A7E63;
+    --border-warm: rgba(107,69,32,0.16);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--warm-white); color: var(--deep); font-weight: 300; font-size: 15px; line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,246,240,0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border-warm);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem; height: 68px;
+  }
+  .nav-logo-img { height: 50px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--umber); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--deep); }
+  .nav-ig { display: flex; align-items: center; gap: 0.4rem; }
+  .nav-ig svg { width: 15px; height: 15px; }
+
+  /* HERO */
+  .hero {
+    background: var(--bg-logo);
+    padding: 5rem 3rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 500px;
+    border-bottom: 0.5px solid var(--border-warm);
+  }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; font-weight: 400; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(2.6rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--deep); margin-bottom: 1.4rem; }
+  .hero h1 em { font-style: italic; color: var(--umber); }
+  .hero-desc { color: var(--muted); font-size: 0.92rem; max-width: 360px; margin-bottom: 2.5rem; line-height: 1.9; }
+  .btn-primary { display: inline-block; background: var(--deep); color: var(--warm-white); padding: 0.85rem 2.2rem; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--umber); }
+  .btn-ghost { display: inline-block; background: transparent; color: var(--deep); padding: 0.85rem 2.2rem; font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: 0.5px solid var(--deep); margin-left: 1rem; transition: all 0.2s; }
+  .btn-ghost:hover { background: var(--deep); color: var(--warm-white); }
+  .hero-logo-wrap { display: flex; justify-content: center; align-items: center; }
+  .hero-logo-wrap img { width: 100%; max-width: 380px; height: auto; display: block; }
+
+  /* COMING SOON */
+  #coming-soon { background: var(--warm-white); padding: 6rem 3rem; text-align: center; border-bottom: 0.5px solid var(--border-warm); }
+  .coming-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; font-weight: 400; }
+  .coming-title { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; color: var(--deep); margin-bottom: 0.75rem; }
+  .coming-title em { font-style: italic; color: var(--umber); }
+  .coming-sub { color: var(--muted); font-size: 0.9rem; max-width: 420px; margin: 0 auto 2.5rem; line-height: 1.9; }
+  .divider-center { width: 40px; height: 0.5px; background: var(--gold); margin: 1rem auto 1.5rem; }
+  .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 3rem auto 0; text-align: left; }
+  .shop-card { border: 0.5px solid var(--border-warm); background: var(--warm-white); display: flex; flex-direction: column; transition: transform 0.2s; }
+  .shop-card:hover { transform: translateY(-4px); }
+  .shop-img { width: 100%; aspect-ratio: 3/4; overflow: hidden; background: var(--bg-logo); }
+  .shop-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .shop-info { padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; flex: 1; gap: 1rem; }
+  .shop-category { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+  .shop-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--deep); margin-bottom: 0.2rem; }
+  .shop-material { font-size: 0.75rem; color: var(--muted); }
+  .shop-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+  .shop-price { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--umber); }
+  .shop-btn { display: inline-block; background: var(--deep); color: var(--warm-white); padding: 0.6rem 1.2rem; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+  .shop-btn:hover { background: var(--umber); }
+
+  /* CUSTOM ORDERS */
+  #custom { background: var(--cream); border-top: 0.5px solid var(--border-warm); border-bottom: 0.5px solid var(--border-warm); padding: 5rem 3rem; }
+  .custom-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .section-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; font-weight: 400; }
+  .section-title { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--deep); margin-bottom: 0.5rem; line-height: 1.2; }
+  .divider { width: 40px; height: 0.5px; background: var(--gold); margin: 1rem 0 1.5rem; }
+  .process-steps { margin-top: 2rem; }
+  .process-step { display: flex; gap: 1.25rem; margin-bottom: 2rem; align-items: flex-start; }
+  .step-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--gold-light); line-height: 1; min-width: 2rem; flex-shrink: 0; }
+  .step-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; color: var(--deep); margin-bottom: 0.25rem; }
+  .step-desc { font-size: 0.84rem; color: var(--muted); }
+
+  /* CONTACT OPTIONS */
+  .contact-options { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+  .contact-btn {
+    display: flex; align-items: center; gap: 0.85rem;
+    padding: 1rem 1.25rem;
+    border: 0.5px solid var(--border-warm);
+    background: var(--warm-white);
+    text-decoration: none;
+    color: var(--deep);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .contact-btn:hover { border-color: var(--umber); background: var(--bg-logo); }
+  .contact-btn-icon { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: var(--bg-logo); flex-shrink: 0; }
+  .contact-btn-icon svg { width: 18px; height: 18px; }
+  .contact-btn-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.1rem; }
+  .contact-btn-value { font-size: 0.88rem; color: var(--deep); }
+  .contact-or { text-align: center; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; position: relative; margin: 0.5rem 0; }
+  .contact-or::before, .contact-or::after { content: ''; position: absolute; top: 50%; width: 42%; height: 0.5px; background: var(--border-warm); }
+  .contact-or::before { left: 0; }
+  .contact-or::after { right: 0; }
+
+  .custom-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .form-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--umber); font-weight: 400; }
+  .form-field input, .form-field select, .form-field textarea { padding: 0.72rem 1rem; border: 0.5px solid var(--border-warm); background: var(--warm-white); font-family: var(--sans); font-size: 0.88rem; color: var(--deep); font-weight: 300; outline: none; transition: border-color 0.2s; -webkit-appearance: none; appearance: none; }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--umber); }
+  .form-field textarea { resize: vertical; min-height: 100px; }
+  .form-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.2rem; }
+  .form-success { display: none; background: var(--deep); color: var(--warm-white); padding: 2rem; font-family: var(--serif); font-size: 1.15rem; font-weight: 300; text-align: center; font-style: italic; }
+
+  /* FOOTER */
+  footer { background: var(--deep); padding: 2.5rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo-img { height: 60px; width: auto; display: block; }
+  .footer-tagline { font-size: 0.75rem; color: var(--gold-light); margin-top: 0.4rem; letter-spacing: 0.08em; font-style: italic; font-family: var(--serif); }
+  .footer-right { text-align: right; display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
+  .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.35); }
+  .footer-social { display: flex; gap: 1rem; }
+  .footer-social a { color: var(--gold-light); opacity: 0.7; transition: opacity 0.2s; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .footer-social a:hover { opacity: 1; }
+  .footer-social svg { width: 15px; height: 15px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; min-height: auto; }
+    .hero-logo-wrap { order: -1; }
+    .hero-logo-wrap img { max-width: 240px; }
+    #coming-soon { padding: 4rem 1.5rem; }
+    .shop-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .custom-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+    #custom { padding: 3rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+    .footer-right { text-align: left; align-items: flex-start; }
+    .waitlist-wrap { flex-direction: column; }
+    .waitlist-wrap input { border-right: 0.5px solid var(--border-warm); border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <img class="nav-logo-img" src="logo.webp" alt="Grandmalory Crochet"/>
+  <ul class="nav-links">
+    <li><a href="#coming-soon">Collection</a></li>
+    <li><a href="#custom">Custom Orders</a></li>
+    <li>
+      <a href="https://instagram.com/grandmalory_crochet" target="_blank" class="nav-ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        @grandmalory_crochet
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Est. 2024 · Handmade with love</p>
+    <h1>Crocheted<br/><em>treasures,</em><br/>made just for you</h1>
+    <p class="hero-desc">Each piece from Grandmalory is worked stitch by stitch with care — made to be cherished for decades, then passed down.</p>
+    <div>
+      <a class="btn-primary" href="#coming-soon">Shop the collection</a>
+      <a class="btn-ghost" href="#custom">Commission a piece</a>
+    </div>
+  </div>
+  <div class="hero-logo-wrap">
+    <img src="logo.webp" alt="Grandmalory Crochet — Handmade with love"/>
+  </div>
+</div>
+
+<section id="coming-soon">
+  <p class="coming-eyebrow">The collection</p>
+  <h2 class="coming-title">Handcrafted <em>with love,</em><br/>made just for you</h2>
+  <div class="divider-center"></div>
+  <p class="coming-sub">Every piece is made by hand. When they're gone, they're gone.</p>
+
+  <div class="shop-grid">
+    <div class="shop-card">
+      <div class="shop-img"><img src="mesh-top.png" alt="Cloud Mesh Top"/></div>
+      <div class="shop-info">
+        <div>
+          <p class="shop-category">Wearables</p>
+          <p class="shop-name">Cloud Mesh Top</p>
+          <p class="shop-material">100% Cotton · Soft &amp; Breathable</p>
+        </div>
+        <div class="shop-bottom">
+          <p class="shop-price">169 DHS</p>
+          <a class="shop-btn" href="mailto:grandmalorycrochet@gmail.com?subject=Order: Cloud Mesh Top&body=Hi! I'd like to order the Cloud Mesh Top (169 DHS). My size is:">Order now</a>
+        </div>
+      </div>
+    </div>
+    <div class="shop-card">
+      <div class="shop-img"><img src="bandana.png" alt="Vintage Lace Bandana"/></div>
+      <div class="shop-info">
+        <div>
+          <p class="shop-category">Accessories</p>
+          <p class="shop-name">Vintage Lace Bandana</p>
+          <p class="shop-material">100% Cotton · Lightweight &amp; Comfortable</p>
+        </div>
+        <div class="shop-bottom">
+          <p class="shop-price">69 DHS</p>
+          <a class="shop-btn" href="mailto:grandmalorycrochet@gmail.com?subject=Order: Vintage Lace Bandana&body=Hi! I'd like to order the Vintage Lace Bandana (69 DHS).">Order now</a>
+        </div>
+      </div>
+    </div>
+    <div class="shop-card">
+      <div class="shop-img"><img src="beach-bag.png" alt="Beach Bag"/></div>
+      <div class="shop-info">
+        <div>
+          <p class="shop-category">Accessories</p>
+          <p class="shop-name">Beach Bag</p>
+          <p class="shop-material">Handmade Crochet · Perfect for any occasion</p>
+        </div>
+        <div class="shop-bottom">
+          <p class="shop-price">239 DHS</p>
+          <a class="shop-btn" href="mailto:grandmalorycrochet@gmail.com?subject=Order: Beach Bag&body=Hi! I'd like to order the Beach Bag (239 DHS).">Order now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<section id="custom">
+  <div class="custom-inner">
+    <div>
+      <p class="section-eyebrow">Bespoke craftsmanship</p>
+      <h2 class="section-title">Commission<br/>a piece</h2>
+      <div class="divider"></div>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:360px;margin-bottom:2rem;line-height:1.9">
+        Don't want to wait? I'm already taking custom orders. Reach out directly or fill out the form below — I'd love to create something just for you.
+      </p>
+
+      <div class="contact-options">
+        <a class="contact-btn" href="mailto:grandmalorycrochet@gmail.com">
+          <div class="contact-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--umber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <span class="contact-btn-label">Email</span>
+            <span class="contact-btn-value">grandmalorycrochet@gmail.com</span>
+          </div>
+        </a>
+        <div class="contact-or">or</div>
+        <a class="contact-btn" href="https://instagram.com/grandmalory_crochet" target="_blank">
+          <div class="contact-btn-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--umber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="var(--umber)" stroke="none"/></svg>
+          </div>
+          <div>
+            <span class="contact-btn-label">Instagram DMs</span>
+            <span class="contact-btn-value">@grandmalory_crochet</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="process-steps" style="margin-top:2.5rem">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <div>
+            <p class="step-title">Share your vision</p>
+            <p class="step-desc">Tell me your idea, preferred colors, and any inspiration you have.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <div>
+            <p class="step-title">Design consultation</p>
+            <p class="step-desc">We'll connect to discuss materials, sizing, timeline, and a quote.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <div>
+            <p class="step-title">Made just for you</p>
+            <p class="step-desc">Your piece is crafted with care, then shipped with handwritten notes and beautiful packaging.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;font-weight:400">Or fill out the form</p>
+      <div class="custom-form" id="custom-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">First name</label>
+            <input type="text" placeholder="Eloise" id="fname"/>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Last name</label>
+            <input type="text" placeholder="Durant" id="lname"/>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Email address</label>
+          <input type="email" placeholder="your@email.com" id="email"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label">What type of piece?</label>
+          <select id="type">
+            <option value="">Select a category</option>
+            <option>Sweater or cardigan</option>
+            <option>Shawl or wrap</option>
+            <option>Hat or beanie</option>
+            <option>Bag or tote</option>
+            <option>Home décor</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Color preferences</label>
+          <input type="text" placeholder="e.g. warm neutrals, dusty rose, deep forest" id="colors"/>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Tell me about your vision</label>
+          <textarea placeholder="Describe the piece you have in mind — occasion, style, any details or inspiration..." id="vision"></textarea>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Estimated budget</label>
+          <select id="budget">
+            <option value="">Select a range</option>
+            <option>Under $75</option>
+            <option>$75 – $150</option>
+            <option>$150 – $300</option>
+            <option>$300 – $500</option>
+            <option>$500+</option>
+          </select>
+          <span class="form-note">I'll provide a full quote before any work begins.</span>
+        </div>
+        <button class="btn-primary" onclick="submitForm()" style="margin-top:0.5rem;width:fit-content">Submit inquiry →</button>
+      </div>
+      <div class="form-success" id="form-success">
+        Thank you — your inquiry has been received.<br/>
+        <span style="font-size:0.82rem;font-family:var(--sans);font-style:normal;color:var(--gold-light)">Expect a reply within 2–3 business days.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <img class="footer-logo-img" src="logo.webp" alt="Grandmalory Crochet"/>
+    <div class="footer-tagline">Crocheted treasures, made just for you.</div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-social">
+      <a href="mailto:grandmalorycrochet@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        Email
+      </a>
+      <a href="https://instagram.com/grandmalory_crochet" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        Instagram
+      </a>
+    </div>
+    <div class="footer-copy">© 2026 Grandmalory Crochet. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+
+async function submitForm() {
+  const fname = document.getElementById('fname').value;
+  const lname = document.getElementById('lname').value;
+  const email = document.getElementById('email').value;
+  const type = document.getElementById('type').value;
+  const colors = document.getElementById('colors').value;
+  const vision = document.getElementById('vision').value;
+  const budget = document.getElementById('budget').value;
+
+  if (!email || !vision) { alert('Please fill in at least your email and vision.'); return; }
+
+  const btn = document.querySelector('#custom-form .btn-primary');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/mykqolaz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name: fname + ' ' + lname, email, type, colors, vision, budget })
+    });
+    if (res.ok) {
+      document.getElementById('custom-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      alert('Something went wrong. Please try emailing directly at grandmalorycrochet@gmail.com');
+      btn.textContent = 'Submit inquiry →';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    alert('Something went wrong. Please try emailing directly at grandmalorycrochet@gmail.com');
+    btn.textContent = 'Submit inquiry →';
+    btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
